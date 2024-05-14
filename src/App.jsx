@@ -6,6 +6,7 @@ import "./App.css";
 import React from "react";
 
 const App = () => {
+  //// *CSS style*
   const inputStyle = {
     backgroundColor: "lightblue",
     borderRadius: "10px",
@@ -20,6 +21,7 @@ const App = () => {
     gridTemplateColumns: "repeat(4, 1fr)",
     gridGap: "20px",
   };
+  //// *CSS style*
 
   const [plans, setPlan] = useState([
     { id: 0, title: "", body: "", isDone: false },
@@ -28,8 +30,9 @@ const App = () => {
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [completedPlans, setCompletedPlans] = useState([]);
 
-  // plans 객체 추가
+  // plans 객체 생성 컴포넌트
   const onSubmitHandler = (event) => {
     event.preventDefault();
     const newPlan = {
@@ -49,11 +52,25 @@ const App = () => {
 
   // 삭제 컴포넌트
   const deleteUserHandler = (id) => {
-    const deletedPlans = plans.filter(function (plan) {
-      return plan.id != id;
-    });
-
+    // working 구역 plan 삭제
+    const deletedPlans = plans.filter((plan) => plan.id != id);
     setPlan(deletedPlans);
+
+    // done 구역 plan 삭제
+    const deletedCompletedPlans = completedPlans.filter(
+      (plan) => plan.id !== id
+    );
+    setCompletedPlans(deletedCompletedPlans);
+  };
+
+  // 완료 컴포넌트
+  const completedHandler = (id) => {
+    // 완료 버튼 눌린 계획 제거
+    const updatedPlans = plans.filter((plan) => plan.id !== id);
+    setPlan(updatedPlans);
+
+    const completedPlan = plans.find((plan) => plan.id === id); // 계획 리스트 중 완료 버튼 눌린 배열 만들고
+    setCompletedPlans([...completedPlans, completedPlan]); //완료된 계획 completedPlans 상태에 추가하기
   };
 
   return (
@@ -87,6 +104,7 @@ const App = () => {
                 key={plan.id}
                 plan={plan}
                 deleteUserHandler={deleteUserHandler}
+                completedHandler={completedHandler}
               />
             );
           })}
@@ -94,12 +112,21 @@ const App = () => {
       </div>
       <div>
         <h3>Done !!😺</h3>
+        <div style={planStyle}>
+          {completedPlans.map((plan) => (
+            <Plan
+              key={plan.id}
+              plan={plan}
+              deleteUserHandler={deleteUserHandler}
+            />
+          ))}
+        </div>
       </div>
     </>
   );
 };
 
-const Plan = ({ plan, deleteUserHandler }) => {
+const Plan = ({ plan, deleteUserHandler, completedHandler }) => {
   const squareStyle = {
     width: "200px",
     height: "100px",
@@ -131,7 +158,7 @@ const Plan = ({ plan, deleteUserHandler }) => {
       <p style={bodyStyle}>{body}</p>
       <div>
         <button onClick={() => deleteUserHandler(id)}>삭제</button>
-        <button>완료</button>
+        <button onClick={() => completedHandler(id)}>완료</button>
       </div>
     </div>
   );
