@@ -1,0 +1,49 @@
+.square {
+  width: 100%;
+  height: 12rem;
+  gap: 5px;
+  background-color: #fff7be75;
+  border: 2px solid #c0bcbe;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.content-wrapper {
+  position: absolute;
+  top: 1rem;
+  width: 98%;
+  height: calc(100% - 3.5rem); /* 버튼 영역을 제외한 높이 */
+  overflow: auto; /* 내용이 넘칠 때 스크롤 생성 */
+}
+
+.title {
+  font-size: 35px;
+  font-weight: normal;
+  margin: 0;
+  text-align: center;
+}
+
+.body {
+  font-size: 20px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.twoButton {
+  position: absolute;
+  bottom: 0.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.twoButton > button {
+  background-color: rgb(164 220 167 / 52%);
+  border-radius: 10px;
+  border: 2px solid #c0bcbe;
+  margin: 0.1rem;
+  padding: 0.2rem;
+}
