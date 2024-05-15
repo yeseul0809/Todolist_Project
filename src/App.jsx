@@ -1,47 +1,36 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { v4 as uuidv4 } from "uuid";
 import "./App.css";
-
 import "./Plan.css";
+import swal from "sweetalert";
 import Plan from "./Plan";
 
-import React from "react";
-
 const App = () => {
-  //// *CSS style*
-  const inputStyle = {
-    backgroundColor: "#ffc5489c",
-    borderRadius: "10px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "20px",
-  };
-
-  const planStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
-    gridGap: "20px",
-  };
-  //// *CSS style*
-
-  const [plans, setPlan] = useState([
-    { id: 0, title: "", body: "", isDone: false },
-  ]);
-
+  const [plans, setPlan] = useState([]);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
   // plans 객체 생성 컴포넌트
   const onSubmitHandler = (event) => {
     event.preventDefault();
+
+    // 유효성 검사
+    // 제목이나 내용 둘중하나라도 빈칸이면 swal 창을 띄우고 여기서 종료시킨다.
+    if (!title.trim() || !body.trim()) {
+      swal(
+        "다시 입력해주세요.",
+        "제목과 내용을 모두 입력해야합니다.",
+        "warning"
+      );
+      return;
+    }
     const newPlan = {
-      id: new Date().getTime() + 1,
+      id: uuidv4(),
       title: title,
       body: body,
       isDone: false,
     };
+    console.log(newPlan);
 
     // 계획리스트 추가.
     setPlan([...plans, newPlan]);
@@ -71,7 +60,7 @@ const App = () => {
     <>
       <header>
         <h1>My Todo List</h1>
-        <form style={inputStyle} onSubmit={onSubmitHandler}>
+        <form className="inputStyle" onSubmit={onSubmitHandler}>
           <p>제목</p>
           <input
             type="text"
@@ -88,9 +77,9 @@ const App = () => {
         </form>
       </header>
 
-      <div>
-        <h3>Working..💡</h3>
-        <div style={planStyle}>
+      <div className="working">
+        <h3 className="miniTitle">Working..💡</h3>
+        <div className="planStyle">
           {plans
             .filter((plan) => !plan.isDone)
             .map((plan) => (
@@ -103,9 +92,9 @@ const App = () => {
             ))}
         </div>
       </div>
-      <div>
-        <h3>Done !!😺</h3>
-        <div style={planStyle}>
+      <div className="done">
+        <h3 className="miniTitle">Done !!😺</h3>
+        <div className="planStyle">
           {plans
             .filter((plan) => plan.isDone)
             .map((plan) => (

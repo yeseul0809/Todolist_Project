@@ -1,6 +1,7 @@
 .square {
+  box-sizing: border-box;
   width: 100%;
-  height: 12rem;
+  height: 11rem;
   gap: 5px;
   background-color: #fff7be75;
   border: 2px solid #c0bcbe;
@@ -12,25 +13,74 @@
   position: relative;
 }
 
+.squareDone {
+  box-sizing: border-box;
+  width: 100%;
+  height: 11rem;
+  gap: 5px;
+  background-color: #f6616130;
+  border: 2px solid #c0bcbe;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
 .content-wrapper {
+  box-sizing: border-box;
   position: absolute;
   top: 1rem;
   width: 98%;
-  height: calc(100% - 3.5rem); /* 버튼 영역을 제외한 높이 */
-  overflow: auto; /* 내용이 넘칠 때 스크롤 생성 */
+  height: calc(100% - 3.5rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.title {
-  font-size: 35px;
+/* 스크롤바 전체의 스타일 */
+::-webkit-scrollbar {
+  width: 10px; /* 스크롤바의 너비 */
+  height: 2px; /* 수평 스크롤바의 높이 */
+}
+
+/* 스크롤바 트랙 (바탕) 스타일 */
+::-webkit-scrollbar-track {
+  background: #fee4accc; /* 트랙의 배경색 */
+  border-radius: 10px; /* 트랙의 모서리 둥글기 */
+}
+
+/* 스크롤바 핸들 (움직이는 부분) 스타일 */
+::-webkit-scrollbar-thumb {
+  background: #e6dac5; /* 핸들의 배경색 */
+  border-radius: 10px; /* 핸들의 모서리 둥글기 */
+}
+
+/* 스크롤바 핸들:hover (마우스 오버 시) 스타일 */
+::-webkit-scrollbar-thumb:hover {
+  background: #ceede7d1; /* 핸들의 배경색 변경 */
+}
+
+.title,
+.body {
+  box-sizing: border-box; /* 추가 */
+  overflow-wrap: break-word; /* 추가 */
+  word-break: break-all; /* 추가 */
+  max-width: 100%; /* 추가 */
+
+  font-size: 35px; /* title에만 해당 */
   font-weight: normal;
   margin: 0;
   text-align: center;
 }
 
 .body {
-  font-size: 20px;
+  font-size: 20px; /* body에만 해당 */
   margin: 10px 0;
-  text-align: center;
 }
 
 .twoButton {
@@ -40,8 +90,16 @@
   justify-content: center;
 }
 
-.twoButton > button {
+.buttonWorking {
   background-color: rgb(164 220 167 / 52%);
+  border-radius: 10px;
+  border: 2px solid #c0bcbe;
+  margin: 0.1rem;
+  padding: 0.2rem;
+}
+
+.buttonDone {
+  background-color: rgb(247 144 248 / 52%);
   border-radius: 10px;
   border: 2px solid #c0bcbe;
   margin: 0.1rem;
