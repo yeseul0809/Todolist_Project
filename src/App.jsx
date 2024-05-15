@@ -57,11 +57,16 @@ const App = () => {
     setPlan(completedPlans);
   };
 
+  // 페이지 새로고침
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   return (
     <>
       <header>
         {/* Input */}
-        <h1>My Todo List</h1>
+        <h1 onClick={refreshPage}>My Todo List</h1>
         <InputForm
           title={title}
           setTitle={setTitle}

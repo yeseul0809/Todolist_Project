@@ -38,8 +38,9 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
 }
 
 /* 스크롤바 전체의 스타일 */
@@ -96,6 +97,7 @@
   border: 2px solid #c0bcbe;
   margin: 0.1rem;
   padding: 0.2rem;
+  cursor: pointer;
 }
 
 .buttonDone {
@@ -104,4 +106,5 @@
   border: 2px solid #c0bcbe;
   margin: 0.1rem;
   padding: 0.2rem;
+  cursor: pointer;
 }
