@@ -21,6 +21,32 @@
 
 ### 🗂️ 폴더구조
 
+```
+📦TODO-LIST
+├─ .eslintrc.cjs
+├─ .gitignore
+├─ README.md
+├─ index.html
+├─ package-lock.json
+├─ package.json
+├─ public
+│  └─ vite.svg
+├─📂src
+│  ├─📜 App.css
+│  ├─📜 App.jsx
+│  ├─📜 Input.css
+│  ├─📜 Input.jsx
+│  ├─📜 Plan.css
+│  ├─📜 Plan.jsx
+│  ├─📜 PlansList.jsx
+│  ├─📂 assets
+│  │  └─ react.svg
+│  ├─ index.css
+│  └─ main.jsx
+├─ vite.config.js
+└─ yarn.lock
+```
+
 <br>
 
 ### 🗄️파일설명
