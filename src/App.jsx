@@ -3,7 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 import "./Plan.css";
 import swal from "sweetalert";
-import Plan from "./Plan";
+import InputForm from "./Input";
+import PlansList from "./PlansList";
 
 const App = () => {
   const [plans, setPlan] = useState([]);
@@ -59,54 +60,30 @@ const App = () => {
   return (
     <>
       <header>
+        {/* Input */}
         <h1>My Todo List</h1>
-        <form className="inputStyle" onSubmit={onSubmitHandler}>
-          <p>제목</p>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <p>내용</p>
-          <input
-            type="text"
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-          />
-          <button>추가하기</button>
-        </form>
+        <InputForm
+          title={title}
+          setTitle={setTitle}
+          body={body}
+          setBody={setBody}
+          onSubmitHandler={onSubmitHandler}
+        />
       </header>
-
-      <div className="working">
-        <h3 className="miniTitle">Working..💡</h3>
-        <div className="planStyle">
-          {plans
-            .filter((plan) => !plan.isDone)
-            .map((plan) => (
-              <Plan // props 전달
-                key={plan.id}
-                plan={plan}
-                deleteUserHandler={deleteUserHandler}
-                completedHandler={completedHandler}
-              />
-            ))}
-        </div>
-      </div>
-      <div className="done">
-        <h3 className="miniTitle">Done !!😺</h3>
-        <div className="planStyle">
-          {plans
-            .filter((plan) => plan.isDone)
-            .map((plan) => (
-              <Plan
-                key={plan.id}
-                plan={plan}
-                deleteUserHandler={deleteUserHandler}
-                completedHandler={completedHandler}
-              />
-            ))}
-        </div>
-      </div>
+      {/* Working Plans */}
+      <PlansList
+        plans={plans}
+        deleteUserHandler={deleteUserHandler}
+        completedHandler={completedHandler}
+        isDone={false}
+      />
+      {/* Done Plans */}
+      <PlansList
+        plans={plans}
+        deleteUserHandler={deleteUserHandler}
+        completedHandler={completedHandler}
+        isDone={true}
+      />
     </>
   );
 };

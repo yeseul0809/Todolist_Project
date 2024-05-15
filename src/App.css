@@ -13,27 +13,6 @@ h1 {
   font-size: 3em;
   margin: 1rem;
 }
-.inputStyle {
-  background-color: #ffc5489c;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.inputStyle > p {
-  font-size: 1.3rem;
-  margin: 0.7rem;
-}
-
-.inputStyle > button {
-  background-color: rgb(164 220 167 / 77%);
-  border-radius: 10px;
-  border: 2px solid #c0bcbe;
-  padding: 0.2rem;
-  margin: 1rem;
-}
-
 .miniTitle {
   font-size: 1.7rem;
 }
