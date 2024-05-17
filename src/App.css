@@ -23,16 +23,16 @@ h1 {
   grid-gap: 20px;
 }
 
-.swal-modal {
+.swal2-modal {
   font-family: "Jua", sans-serif;
 }
-.swal-title {
+.swal2-title {
   font-size: 2.5rem;
 }
-.swal-text {
+.swal2-text {
   font-size: 1.3rem;
 }
-.swal-button {
+.swal2-button {
   background-color: (164 208 84 / 66%);
   font-weight: 400;
 }

@@ -1,7 +1,7 @@
 import "./Plan.css";
 import Plan from "./Plan";
 
-const PlansList = ({ plans, deleteUserHandler, completedHandler, isDone }) => {
+const PlansList = ({ plans, deleteUserHandler, completeHandler, isDone }) => {
   return (
     <div className={isDone ? "done" : "working"}>
       <h3 className="miniTitle">{isDone ? "Done !!😺" : "Working..💡"}</h3>
@@ -13,7 +13,7 @@ const PlansList = ({ plans, deleteUserHandler, completedHandler, isDone }) => {
               key={plan.id}
               plan={plan}
               deleteUserHandler={deleteUserHandler}
-              completedHandler={completedHandler}
+              completeHandler={completeHandler}
             />
           ))}
       </div>
