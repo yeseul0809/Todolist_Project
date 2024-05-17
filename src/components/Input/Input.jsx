@@ -7,7 +7,7 @@ const InputForm = ({ setPlans, plans }) => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
-  // plans 객체 생성 컴포넌트
+  // plans 추가 컴포넌트
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
